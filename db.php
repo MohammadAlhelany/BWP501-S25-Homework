@@ -1,7 +1,7 @@
 <?php
 $host = 'db.fr-pari1.bengt.wasmernet.com';
 $port = '10272';
-$db   = 'dbhzpDpPoH4WtxKNdTEBtmfx';
+$db   = 'city_events';
 $user = 'e040267b75268000f8198ca1b125';
 $pass = '069fe040-267b-7610-8000-eaeafc30152a';
 $charset = 'utf8mb4';
