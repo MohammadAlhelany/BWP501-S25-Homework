@@ -1,0 +1,352 @@
+:root {
+    --bodcol: #D9D5F5;
+    --hedcol: #192B38;
+    --nvcol: #1c5883;
+    --lincol: rgb(254, 167, 34);
+    --backlincol: white;
+    --inputcol: rgb(226, 216, 216);
+    --formcol: white;
+    --logobackcol: rgb(197, 229, 245);
+    --h1col: rgb(243, 243, 243);
+}
+
+.body {
+    min-height: 100vh;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    background-color: var(--bodcol);
+    overflow: visible;
+}
+
+
+main {
+    flex-grow: 1;
+}
+
+.body.darkMode {
+    background-color: #1c5883;
+}
+
+header {
+    background-color: var(--hedcol);
+    display: flex;
+    color: rgb(25, 42, 57);
+    flex-direction: column;
+    width: 100%;
+}
+
+header div {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+
+p {
+    font-family: roboto, arial;
+}
+
+header h1 {
+    text-align: center;
+    font-family: roboto, arial;
+    color: var(--h1col);
+    order: 1;
+}
+
+header button {
+    background: transparent;
+    border: none;
+
+}
+
+header img {
+    width: 2.3em;
+    height: auto;
+}
+
+header div {
+    direction: ltr;
+    display: flex;
+    align-items: center;
+}
+
+header div div>img {
+    border-radius: 70%;
+}
+
+.navIsOpen {
+    transform: translateX(0);
+}
+
+.menu {
+    order: 3;
+}
+
+.menu:hover {
+    cursor: pointer;
+}
+
+.moon {
+    order: 0;
+}
+
+.moon:hover {
+    cursor: pointer;
+}
+
+header nav {
+    background-color: var(--nvcol);
+    order: +1;
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    display: inline;
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    font-size: 2em;
+    text-align: center;
+    transform: translateX(200%);
+}
+
+header nav ul {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 1em;
+    align-items: center;
+}
+
+header nav ul li.active {
+    background-color: var(--backlincol);
+    border-radius: 10px;
+    width: 50%;
+
+}
+
+header nav a {
+    text-decoration: none;
+    color: var(--lincol);
+}
+
+header nav>button {
+    background-color: transparent;
+    position: absolute;
+    top: 1em;
+    right: 1em;
+    border: 0;
+}
+
+header nav>button img {
+    width: 1em;
+    height: 1em;
+}
+
+
+.photo {
+    width: 5em;
+    height: auto;
+    border-radius: 70%;
+    order: -1;
+}
+
+#student {
+    gap: 0.5 em;
+    display: grid;
+    padding: 0;
+    grid-template-columns: 33% 33% 33%;
+}
+
+.user p {
+    padding: 0;
+    text-align: center;
+}
+
+.user {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+h2 {
+    font-family: roboto, arial;
+    padding-left: 0.5em;
+}
+
+h3 {
+    font-family: roboto, arial;
+    padding-left: 0.5em;
+}
+
+p {
+    padding-left: 1em;
+}
+
+footer {
+    background-color: var(--hedcol);
+    display: flex;
+    flex-direction: column;
+    color: rgb(25, 42, 57);
+    gap: 0.5 em;
+}
+
+footer div {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    gap: 1em;
+    padding-top: 20px;
+}
+
+footer img:first-of-type {
+    width: 2.5em;
+    height: 2.5em;
+    border-radius: 75%;
+}
+
+footer img:nth-of-type(2) {
+    width: 2.5em;
+    height: 2.5em;
+    border-radius: 75%;
+}
+
+footer img:nth-of-type(3) {
+    width: 2.5em;
+    height: 2.5em;
+
+}
+
+footer img:nth-of-type(4) {
+    width: 2.5em;
+    height: 2.5em;
+
+}
+
+footer p {
+    text-align: center;
+    color: white;
+    margin-top: 20px;
+}
+
+
+
+.section1 {
+    margin-top: 20px;
+}
+
+
+
+
+
+.card1,
+.card2,
+.card3,
+.card4,
+.card5,
+.card6,
+.card7,
+.card8 {
+    padding: 12px;
+}
+
+
+.closedate {
+    background-color: black;
+}
+
+.section1-title {
+    color: #192B38;
+    margin: 0px;
+    font-size: 30px;
+}
+
+#searchfilter button {
+    border-radius: 3px;
+    background: #fff;
+    border-color: transparent;
+}
+
+#searchfilter button:hover {
+    background: #ddd;
+}
+
+
+#filter-buttons button {
+    border-radius: 3px;
+    background: #fff;
+    border-color: transparent;
+}
+
+#filter-buttons button:hover {
+    background: #ddd;
+}
+
+
+
+.card1Text {
+    color: white;
+}
+
+.card1Text.p {
+    font-weight: bold;
+}
+
+#filter-buttons button.active {
+    color: #fff;
+    background: #FDA722;
+}
+
+#filterable-cards .card {
+    border: 2px solid transparent;
+    width: calc(100% / 2 - 10px);
+}
+
+#filterable-cards .card.hide {
+    display: none;
+}
+
+@media (max-width: 600px) {
+    #filterable-cards {
+        justify-content: center;
+    }
+}
+
+#myBtn {
+    display: none;
+    top: 50%;
+    position: fixed;
+    right: 15px;
+    z-index: 99;
+    border: none;
+    outline: none;
+    background-color: #FDA722;
+    cursor: pointer;
+    padding: 15px;
+    border-radius: 200px;
+}
+
+#myBtn:hover {
+    background-color: #555;
+}
+
+
+.show {
+    display: block;
+}
+
+.hide {
+    display: none !important;
+}
+
+
+
+
+.lang-flag {
+    cursor: pointer;
+    transition: opacity 0.3s, border 0.3s;
+    border: 2px solid transparent;
+}

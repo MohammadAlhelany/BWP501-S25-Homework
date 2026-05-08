@@ -1,0 +1,225 @@
+<?php
+include 'db.php';
+$query = "SELECT * FROM events_en";
+$stmt = $pdo->query($query);
+?>
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Event Details</title>
+  <link rel="icon" type="image/jpg" href="assets/img/Wander Sryia.jpg">
+  <link rel="stylesheet" href="assets/css/styles.css">
+  <script src="assets/js/main.js" defer></script>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
+    crossorigin="anonymous"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700;900&display=swap"
+        rel="stylesheet">
+</head>
+<!-- Booking Modal -->
+<div class="modal fade" id="bookingModal" tabindex="-1">
+  <div class="modal-dialog">
+    <div class="modal-content">
+
+      <div class="modal-header">
+        <h5 class="modal-title">Book Event</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+      </div>
+
+      <div class="modal-body">
+        <form id="bookingForm">
+          <div class="mb-3">
+            <label class="form-label">Your Name</label>
+            <input type="text" class="form-control" id="userName" required>
+          </div>
+        </form>
+
+        <div id="successMessage" class="alert alert-success d-none">
+          Booking successful!
+        </div>
+      </div>
+
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+          Close
+        </button>
+        <button type="button" class="btn btn-primary" onclick="submitBooking()">
+          Confirm Booking
+        </button>
+      </div>
+
+    </div>
+  </div>
+</div>
+<!-- Booking Modal -->
+<div class="modal fade" id="bookingModal" tabindex="-1">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Book Event</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+      </div>
+      <div class="modal-body">
+        <label>Your Name:</label>
+        <input type="text" id="userName" class="form-control" placeholder="Enter your name">
+        <div id="bookingMessage" class="mt-3"></div>
+      </div>
+      <div class="modal-footer">
+        <button class="btn btn-success" onclick="confirmBooking()">Confirm Booking</button>
+      </div>
+    </div>
+  </div>
+</div>
+<body class="body">
+  <header>
+    <nav>
+            <ul>
+                <li><a href="index.php" data-ar="الرئيسة" data-en="Home">Home</a></li>
+                <li><a href="evnets.php" data-ar="النشاطات" data-en="events">events</a></li>
+                <li class="active"><a href="event.php" data-ar="تفاصيل النشاطات" data-en="events detail">events detail</a></li>
+                <li><a href="about.php" data-ar="من نحن" data-en="about">about</a></li>
+                <li><a href="contact.php" data-ar="تواصل" data-en="contact">contact</a></li>
+            </ul>
+            <button><img src="assets/img/close-icon.png"></button>
+        </nav>
+    <div>
+      <h1>
+        Syrian Virtual University Activities
+      </h1>
+      <div><img src="assets\img\logo.jpg" alt="Logo"></div>
+
+      <button class="menu">
+        <img src="assets/img/Menu.png" alt="">
+      </button>
+      <button class="moon" id="mode">
+        <img src="assets/img/moon.png" alt="">
+      </button>
+      <div class="language-selector">
+        <img src="assets/img/America.jpeg" alt="English" id="flag-en" class="lang-flag active" onclick="setLanguage('en')">
+
+        <img src="assets/img/Syria.jpeg" alt="Arabic" id="flag-ar" class="lang-flag" onclick="setLanguage('ar')">
+      </div>
+    </div>
+  </header>
+  <main><button onclick="topFunction()" id="myBtn" title="Go to top">
+      <img src="assets/img/Arrow.png" alt="Arrow" style="height: 15px;">
+    </button>
+
+    <?php while($row = $stmt->fetch()): ?>
+    <section id="section1">
+      <div class="card" style="margin: 20px; background-color: #192B38;">
+        <div class="row justify-content-center">
+          <div class="col-auto p-3">
+            <div class="card" style="width: 200px;">
+              <img src = "assets/img/<?php echo $row['img']; ?>" alt="">
+            </div>
+          </div>
+          <div class="col-auto p-3">
+            <div class="card" style="width: 200px;">
+              <img src = "assets/img/<?php echo $row['img2']; ?>" alt="">
+            </div>
+          </div>
+        </div>
+        <div class="row justify-content-center m-5">
+          <div class="col-auto card1Text">
+            <strong data-en="<?php echo $row['name']; ?>" data-ar="المدينة السعيدة"><?php echo $row['name']; ?></strong>
+            <ul>
+              <li data-en="Date: <?php echo $row['date']; ?>" data-ar="التاريخ: كل نهاية أسبوع من شهر تشرين الأول">Date: <?php echo $row['date']; ?></li>
+              <li data-en="Location: <?php echo $row['location']; ?>" data-ar="الموقع: المدينة السعيدة، حلب">Location: <?php echo $row['location']; ?></li>
+              <li data-en="Adress: <?php echo $row['address']; ?>" data-ar="الموقع: المدينة السعيدة، حلب">Adress: <?php echo $row['address']; ?></li>
+              <li data-en="Details: <?php echo $row['summary']; ?>"
+                data-ar="التفاصيل: حديقة مليئة بالتسلية والمرح بتجربة ألعاب ومسرحيات للأطفال.">Details: <?php echo $row['summary']; ?></li>
+            </ul>
+          </div>
+        </div>
+        <div class="row">
+          <div class="d-flex justify-content-center gap-2 m-3">
+            <button type="button" class="btn btn-primary" data-en="Share" data-ar="شارك">
+              Share
+            </button>
+            <button type="button" class="btn btn-secondary" onclick="bookEvent()">
+              Add to calendar
+            </button>
+          </div>
+        </div>
+
+        <!-- <div class="accordion p-5" id="accordionExample">
+          <div class="accordion-item">
+            <h2 class="accordion-header">
+              <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne"
+                aria-expanded="true" aria-controls="collapseOne" data-en="Related Event" data-ar="نشاط مشابه">
+                Related Event
+              </button>
+            </h2>
+            <div id="collapseOne" class="accordion-collapse collapse show" data-bs-parent="#accordionExample">
+              <div class="accordion-body">
+                <div class="row">
+                  <div class="col-auto">
+                    <img src="assets/img/Family/Outdoor Movie Night 3.jpeg" alt="" style="width: 150px;">
+                  </div>
+                  <div class="col">
+                    <div class="row">
+                      <p data-en="Bring your blankets and enjoy a family-friendly movie under
+                      the stars. Food stalls and popcorn available."
+                        data-ar="أحضروا بطانياتكم واستمتعوا بفلم عائلي تحت النجوم. طاولات الطعام والبوشار متاحون.">
+                        <strong>Outdoor Movie Night: </strong>Bring your blankets and enjoy a family-friendly movie
+                        under
+                        the stars. Food stalls and popcorn available.
+                      </p>
+                    </div>
+                    <div class="row">
+                      <a href="#section2">
+                        <button type="button" class="btn btn-primary" data-en="Navigate to event details"
+                          data-ar="الذهاب الى تفاصيل النشاط">Navigate to event details</button>
+                      </a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div> -->
+        <?php foreach($events_en as $index => $row): ?>
+          <section id="section-<?= $row['id']; ?>">
+            <?php
+              // Get the next event in the array.
+              // If we are at the last event, go back to the first one (index 0).
+              $next_index = ($index + 1) % count($all_events);
+              $related = $all_events[$next_index];
+            ?>
+
+            <div class="accordion-body">
+                <img src="assets/img/<?= $related['img']; ?>" style="width: 150px;">
+                <p><strong>Related: <?= $related['name']; ?></strong></p>
+                <a href="#section-<?= $related['id']; ?>" class="btn btn-primary">Go to Event</a>
+            </div>
+          </section>
+        <?php endforeach; ?>
+      </div>
+    </section>
+    <?php endwhile; ?>
+  </main>
+
+<footer class="text-center text-white py-4 mt-5" style="background:#192B38;">
+    <h5>Virtual University Events Guide</h5>
+    <p>Developed by Amr , mohammed , Ahmad , Bessan, and Amna</p>
+    <p>Email: support@vuevents.com | Phone: +963 999 999 999</p>
+    <p>© 2026 All Rights Reserved</p>
+    <div>
+        <img src="assets/img/Facebook.png" alt="">
+        <img src="assets/img/Telegram.png" alt="">
+        <img src="assets/img/LinkedIn.png" alt="">
+        <img src="assets/img/Instagram.png" alt="">
+    </div>
+    <p data-ar="جميع الحقوق محفوظة ٢٠٢٥" data-en="all rights reserved 2025 &copy;">all rights reserved 2025</p>
+</footer>
+</body>
+</html>
