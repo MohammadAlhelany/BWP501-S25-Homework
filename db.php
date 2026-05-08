@@ -1,9 +1,9 @@
 <?php
 $host = 'db.fr-pari1.bengt.wasmernet.com';
 $port = '10272';
-$db   = 'city_events';
-$user = 'e040267b75268000f8198ca1b125';
-$pass = '069fe040-267b-7610-8000-eaeafc30152a';
+$db   = 'db8jeT7CYYuG5XQuN4pmPZmz';
+$user = 'e15d285b7d208000c333f4f5a3ea';
+$pass = '069fe15d-285b-7e4e-8000-25a25bcd99c2';
 $charset = 'utf8mb4';
 
 $dsn = "mysql:host=$host;port=$port;dbname=$db;charset=$charset";
