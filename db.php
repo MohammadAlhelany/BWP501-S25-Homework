@@ -1,5 +1,5 @@
 <?php
-$host = 'localhost';
+$host = 'db.fr-pari1.bengt.wasmernet.com';
 $db   = 'city_events';
 $user = 'root';
 $pass = '';
