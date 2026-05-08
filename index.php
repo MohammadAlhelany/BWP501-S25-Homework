@@ -17,7 +17,7 @@ $recent_events = $recent_stmt->fetchAll();
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Syrian Virtual University Activities</title>
-    <link rel="icon" type="image/jpg" href="assets/img/Wander Syria.jpeg">
+    <link rel="icon" type="image/jpg" href="assets/img/logo.jpg">
     <link rel="stylesheet" href="assets/css/styles.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
@@ -52,15 +52,7 @@ $recent_events = $recent_stmt->fetchAll();
             <button class="moon" id="mode">
                 <img src="assets/img/moon.png" alt="">
             </button>
-            <div class="language-selector">
-                <img src="assets/img/America.jpeg" alt="English" id="flag-en" class="lang-flag active"
-                    onclick="setLanguage('en')">
-
-                <img src="assets/img/Syria.jpeg" alt="Arabic" id="flag-ar" class="lang-flag" onclick="setLanguage('ar')">
-            </div>
         </div>
-        <button>
-
     </header>
     <main>
         <button onclick="topFunction()" id="myBtn" title="Go to top">

@@ -17,27 +17,25 @@ closeNavButton.addEventListener("click", closeMenu); // add an event listener to
 
 
 // ============== Home Page Filters ==================
-// Ensure these variables are defined at the top
 const filterButtons = document.querySelectorAll("#filter-buttons button");
 const filterableCards = document.querySelectorAll("#filterable-cards .card");
 
 const filterCards = (e) => {
-    // Use e.currentTarget to ensure we get the button even if clicking inner text
     const clickedButton = e.currentTarget;
 
-    // 1. Manage Active Button
+    //Active Button
     const currentActive = document.querySelector("#filter-buttons .active");
     if (currentActive) currentActive.classList.remove("active");
     clickedButton.classList.add("active");
 
-    // 2. Get the filter value (lowercase and trimmed)
+    // Get the filter value
     const filterValue = clickedButton.dataset.filter.toLowerCase().trim();
 
     filterableCards.forEach(card => {
-        // 3. Get the card category from the data-name attribute
+        // Get the card category from the data-name attribute
         const cardCategory = card.dataset.name.toLowerCase().trim();
 
-        // 4. Logic: Show if 'all' or if it matches the category
+        // Logik: Show if 'all' or if it matches the category
         if (filterValue === "all" || cardCategory === filterValue) {
             card.classList.remove("hide");
             card.classList.add("show");
@@ -48,7 +46,6 @@ const filterCards = (e) => {
     });
 };
 
-// 5. Attach the listeners (only once!)
 filterButtons.forEach(button => button.addEventListener("click", filterCards));
 
 
@@ -104,14 +101,14 @@ document.addEventListener("DOMContentLoaded", () => {
             const card = container.querySelector(".card");
             if (!card) return;
 
-            // Get the card section and clean it up (lowercase and no spaces)
+            // get the card section and clean it up (lowercase and no spaces)
             const cardSection = (card.dataset.section || "").toLowerCase().trim();
             const selectedSection = activeFilters.section.toLowerCase().trim();
 
-            // Check: Is it "all" OR does it match the button?
+            // check: Is it "all" OR does it match the button?
             const isMatch = selectedSection === 'all' || cardSection === selectedSection;
 
-            // Apply visibility
+            // apply visibility
             if (isMatch) {
                 container.style.setProperty('display', 'flex', 'important');
             } else {
@@ -120,17 +117,14 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     };
 
-    // Attach the trigger to the buttons
+
     allFilterButtons.forEach(button => {
         button.addEventListener("click", (e) => {
-            // Prevent link behavior if it's an <a> tag
             e.preventDefault();
 
-            // Get the filter value from the clicked button
             const filterValue = e.target.dataset.filter;
             const parentId = e.target.closest('ul').id;
 
-            // Only update if it's a section filter
             if (parentId === "filterSection") {
                 activeFilters.section = filterValue;
             }
@@ -141,97 +135,62 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 });
 
-
-// ===============language=================
-const currentLangElement = document.getElementById('currentLang');
-const elements = document.querySelectorAll('[data-en]');
-const flagEn = document.getElementById('flag-en');
-const flagAr = document.getElementById('flag-ar');
-
-// function to updat (en and ar)
-function setLanguage(langCode) {
-  const isArabic = langCode === 'ar';
-
-  //   text content
-  elements.forEach(el => {
-    el.textContent = isArabic ? el.dataset.ar : el.dataset.en;
-  });
-
-  //text direction
-  document.body.dir = isArabic ? 'rtl' : 'ltr';
-  currentLangElement.textContent = isArabic ? 'Arabic' : 'English';
-}
-
-//  default language (English)
-setLanguage('en');
-
-
-// document.getElementById("contactForm").addEventListener("submit", function(e)
-// {
-//     e.preventDefault();
-
-//     let name = document.getElementById("name").value.trim();
-//     let email = document.getElementById("email").value.trim();
-//     let message = document.getElementById("message").value.trim();
-//     let box = document.getElementById("messageBox");
-//     let emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-
-//     if (name === "" || email === "" || message === "") {
-
-//         e.preventDefault();
-
-//         box.innerHTML = '<div class="alert alert-danger">All fields are mandatory. Please fill them out before submitting.</div>';
-
-//         if(name === "") document.getElementById("name").focus();
-//         else if(email === "") document.getElementById("email").focus();
-//         else if(message === "") document.getElementById("message").focus();
-
-//         return;
-//     }
-
-//     if(!emailPattern.test(email)){
-//         box.innerHTML = '<div class="alert alert-warning">Please enter a valid email address.</div>';
-//         return;
-//     }
-
-//     box.innerHTML = '<div class="alert alert-success">Your message has been sent successfully.</div>';
-//     document.getElementById("contactForm").reset();
-// });
-
-
-document.getElementById("contactForm").addEventListener("btnSubmit", function(e) {
-    // 1. Always prevent the default form submission first
+document.getElementById("contactForm").addEventListener("submit", function(e) {
     e.preventDefault();
 
     const name = document.getElementById("name").value.trim();
     const email = document.getElementById("email").value.trim();
     const message = document.getElementById("message").value.trim();
     const box = document.getElementById("messageBox");
-
-    // Regular expression for basic email validation
     const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
-    // 2. Check for empty fields
     if (name === "" || email === "" || message === "") {
         box.innerHTML = '<div class="alert alert-danger">All fields are mandatory.</div>';
 
-        // Focus the first empty field found
         if (name === "") document.getElementById("name").focus();
         else if (email === "") document.getElementById("email").focus();
         else if (message === "") document.getElementById("message").focus();
-
         return;
     }
 
-    // 3. Check for valid email format
     if (!emailPattern.test(email)) {
         box.innerHTML = '<div class="alert alert-warning">Please enter a valid email address.</div>';
         document.getElementById("email").focus();
         return;
     }
 
-    // 4. If we reached here, validation passed!
     box.innerHTML = '<div class="alert alert-success">Your message has been sent successfully.</div>';
 
     this.reset();
 });
+
+
+// =========Booking modal====================
+// function to open the modal when "Add to calendar" is clicked
+function bookEvent() {
+    const myModal = new bootstrap.Modal(document.getElementById('bookingModal'));
+    myModal.show();
+}
+
+//Function to handle the "Confirm Booking" button logic
+function confirmBooking() {
+    const userName = document.getElementById("userName").value.trim();
+    const messageBox = document.getElementById("bookingMessage");
+
+    if (userName === "") {
+        messageBox.innerHTML = '<div class="alert alert-danger">Please enter your name to book.</div>';
+        document.getElementById("userName").focus();
+        return;
+    }
+
+
+    messageBox.innerHTML = '<div class="alert alert-success">Booking successful! Check your calendar.</div>';
+
+    setTimeout(() => {
+        document.getElementById("userName").value = "";
+        messageBox.innerHTML = "";
+        const modalElement = document.getElementById('bookingModal');
+        const modalInstance = bootstrap.Modal.getInstance(modalElement);
+        modalInstance.hide();
+    }, 2000);
+}

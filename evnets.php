@@ -13,6 +13,7 @@ $all_events = $pdo->query("SELECT * FROM events_en ORDER BY id DESC")->fetchAll(
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Events</title>
+    <link rel="icon" type="image/jpg" href="assets/img/logo.jpg">
     <link rel="stylesheet" href="assets/css/styles.css">
     <script src="assets/js/main.js" defer></script>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
@@ -47,12 +48,6 @@ $all_events = $pdo->query("SELECT * FROM events_en ORDER BY id DESC")->fetchAll(
             <button class="moon" id="mode">
                 <img src="assets/img/moon.png" alt="">
             </button>
-            <div class="language-selector">
-                <img src="assets/img/America.jpeg" alt="English" id="flag-en" class="lang-flag active"
-                    onclick="setLanguage('en')">
-
-                <img src="assets/img/Syria.jpeg" alt="Arabic" id="flag-ar" class="lang-flag" onclick="setLanguage('ar')">
-            </div>
         </div>
     </header>
     <main>
@@ -112,8 +107,6 @@ $all_events = $pdo->query("SELECT * FROM events_en ORDER BY id DESC")->fetchAll(
             <img src="assets/img/Instagram.png">
         </div>
     </footer>
-
-
 </body>
 
 </html>

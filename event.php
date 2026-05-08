@@ -12,7 +12,7 @@ $all_events_ar = $pdo->query("SELECT * FROM events_ar")->fetchAll();
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Event Details</title>
-  <link rel="icon" type="image/jpg" href="assets/img/Wander Sryia.jpg">
+  <link rel="icon" type="image/jpg" href="assets/img/logo.jpg">
   <link rel="stylesheet" href="assets/css/styles.css">
   <script src="assets/js/main.js" defer></script>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
@@ -24,55 +24,23 @@ $all_events_ar = $pdo->query("SELECT * FROM events_ar")->fetchAll();
         rel="stylesheet">
 </head>
     <!-- Booking Modal -->
-    <div class="modal fade" id="bookingModal" tabindex="-1">
+    <div class="modal fade" id="bookingModal" tabindex="-1" aria-hidden="true">
       <div class="modal-dialog">
         <div class="modal-content">
-
           <div class="modal-header">
             <h5 class="modal-title">Book Event</h5>
-            <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
           </div>
-
           <div class="modal-body">
-            <form id="bookingForm">
-              <div class="mb-3">
-                <label class="form-label">Your Name</label>
-                <input type="text" class="form-control" id="userName" required>
-              </div>
-            </form>
-
-            <div id="successMessage" class="alert alert-success d-none">
-              Booking successful!
+            <div class="mb-3">
+                <label for="userName" class="form-label">Your Name:</label>
+                <input type="text" id="userName" class="form-control" placeholder="Enter your name">
             </div>
-          </div>
-
-          <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
-              Close
-            </button>
-            <button type="button" class="btn btn-primary" onclick="submitBooking()">
-              Confirm Booking
-            </button>
-          </div>
-
-        </div>
-      </div>
-    </div>
-    <!-- Booking Modal -->
-    <div class="modal fade" id="bookingModal" tabindex="-1">
-      <div class="modal-dialog">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h5 class="modal-title">Book Event</h5>
-            <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
-          </div>
-          <div class="modal-body">
-            <label>Your Name:</label>
-            <input type="text" id="userName" class="form-control" placeholder="Enter your name">
-            <div id="bookingMessage" class="mt-3"></div>
+            <div id="bookingMessage"></div>
           </div>
           <div class="modal-footer">
-            <button class="btn btn-success" onclick="confirmBooking()">Confirm Booking</button>
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+            <button type="button" class="btn btn-success" onclick="confirmBooking()">Confirm Booking</button>
           </div>
         </div>
       </div>
@@ -101,11 +69,6 @@ $all_events_ar = $pdo->query("SELECT * FROM events_ar")->fetchAll();
       <button class="moon" id="mode">
         <img src="assets/img/moon.png" alt="">
       </button>
-      <div class="language-selector">
-        <img src="assets/img/America.jpeg" alt="English" id="flag-en" class="lang-flag active" onclick="setLanguage('en')">
-
-        <img src="assets/img/Syria.jpeg" alt="Arabic" id="flag-ar" class="lang-flag" onclick="setLanguage('ar')">
-      </div>
     </div>
   </header>
   <main>
@@ -115,7 +78,7 @@ $all_events_ar = $pdo->query("SELECT * FROM events_ar")->fetchAll();
 
     <?php foreach($all_events_en as $index => $row): ?>
     <section id="section-<?php echo $row['id']; ?>">
-      <div class="card" style="margin: 20px; background-color: #192B38; color: white;">
+      <div class="card" style="margin: 20px; background-color: #A196F4; color: white;">
 
         <div class="row justify-content-center">
           <div class="col-auto p-3">

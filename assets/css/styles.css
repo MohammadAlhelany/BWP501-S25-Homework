@@ -1,8 +1,8 @@
 :root {
-    --bodcol: #D9D5F5;
-    --hedcol: #192B38;
-    --nvcol: #1c5883;
-    --lincol: rgb(254, 167, 34);
+    --bodcol: #C4BDEF;
+    --hedcol: #A196F4;
+    --nvcol: #A196F4;
+    --lincol: #F5BF95;
     --backlincol: white;
     --inputcol: rgb(226, 216, 216);
     --formcol: white;
@@ -149,7 +149,7 @@ header nav>button img {
 
 .photo {
     width: 5em;
-    height: auto;
+    height: 5em;
     border-radius: 70%;
     order: -1;
 }

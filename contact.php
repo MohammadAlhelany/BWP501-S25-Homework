@@ -4,6 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/jpg" href="assets/img/logo.jpg">
     <title>contact</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
@@ -34,12 +35,6 @@
             <button class="moon" id="mode">
                 <img src="assets/img/moon.png" alt="">
             </button>
-            <div class="language-selector">
-                <img src="assets/img/America.jpeg" alt="English" id="flag-en" class="lang-flag active"
-                    onclick="setLanguage('en')">
-
-                <img src="assets/img/Syria.jpeg" alt="Arabic" id="flag-ar" class="lang-flag" onclick="setLanguage('ar')">
-            </div>
         </div>
     </header>
 
@@ -67,7 +62,7 @@
                             <textarea class="form-control" rows="5" id="message" required></textarea>
                         </div>
 
-                        <button type="btnSubmit" class="btn btn-primary w-100">
+                        <button type="submit" class="btn btn-primary w-100">
                             Send Message
                         </button>
                     </form>
